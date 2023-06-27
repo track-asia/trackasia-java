@@ -1,5 +1,5 @@
-# MapLibre-Java 
-This repository currently hosts a set of utility libraries required for MapLibre GL Native Android SDK.
+# Trackasia-Java 
+This repository currently hosts a set of utility libraries required for Trackasia GL Native Android SDK.
 
 ### Developer Guide
 The following utility libraries are hosted here:

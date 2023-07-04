@@ -9,8 +9,8 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                groupId project.ext.mapLibreArtifactGroupId
-                artifactId project.ext.mapLibreArtifactId
+                groupId project.ext.trackasiaArtifactGroupId
+                artifactId project.ext.trackasiaArtifactId
 
                 from components.java
 
@@ -27,26 +27,26 @@ afterEvaluate {
                 }
 
                 pom {
-                    name = project.ext.mapLibreArtifactTitle
-                    description = project.ext.mapLibreArtifactTitle
-                    url = project.ext.mapLibreArtifactUrl
+                    name = project.ext.trackasiaArtifactTitle
+                    description = project.ext.trackasiaArtifactTitle
+                    url = project.ext.trackasiaArtifactUrl
                     licenses {
                         license {
-                            name = project.ext.mapLibreArtifactLicenseName
-                            url = project.ext.mapLibreArtifactLicenseUrl
+                            name = project.ext.trackasiaArtifactLicenseName
+                            url = project.ext.trackasiaArtifactLicenseUrl
                         }
                     }
                     developers {
                         developer {
-                            id = project.ext.mapLibreDeveloperId
-                            name = project.ext.mapLibreDeveloperName
-                            email = 'maplibre@maplibre.org'
+                            id = project.ext.trackasiaDeveloperId
+                            name = project.ext.trackasiaDeveloperName
+                            email = 'trackasia@trackasia.org'
                         }
                     }
                     scm {
-                        connection = project.ext.mapLibreArtifactScmUrl
-                        developerConnection = project.ext.mapLibreArtifactScmUrl
-                        url = project.ext.mapLibreArtifactUrl
+                        connection = project.ext.trackasiaArtifactScmUrl
+                        developerConnection = project.ext.trackasiaArtifactScmUrl
+                        url = project.ext.trackasiaArtifactUrl
                     }
                 }
             }
@@ -55,7 +55,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/maplibre.org/maplibre-java"
+                url = "https://maven.pkg.github.com/track-asia.com/trackasia-java"
                 credentials {
                     username = System.getenv("GITHUB_ACTOR")
                     password = System.getenv("GITHUB_TOKEN")

@@ -1,19 +1,19 @@
 ext {
-    mapLibreArtifactGroupId = 'org.maplibre.gl'
-    mapLibreArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
-    mapLibreArtifactTitle = 'MapLibre Android Java Utilities'
-    mapLibreArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')
-    mapLibreDeveloperName = 'MapLibre'
-    mapLibreDeveloperEmail = 'maplibre@maplibre.org'
-    mapLibreDeveloperOrganization = 'MapLibre'
-    mapLibreDeveloperOrganizationUrl = 'http://www.maplibre.org'
-    mapLibreDeveloperId = 'maplibre'
-    mapLibreArtifactUrl = 'https://github.com/maplibre/maplibre-java'
-    mapLibreArtifactVcsUrl = 'https://github.com/maplibre/maplibre-java.git'
-    mapLibreArtifactScmUrl = 'scm:git@github.com:maplibre/maplibre-java.git'
-    mapLibreArtifactLicenseName = 'The Apache Software License, Version 2.0'
-    mapLibreArtifactLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    versionName = getVersionName()
+    trackasiaArtifactGroupId = 'com.track-asia.gl'
+    trackasiaArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
+    trackasiaArtifactTitle = 'Trackasia Android Java Utilities'
+    trackasiaArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')
+    trackasiaDeveloperName = 'Trackasia'
+    trackasiaDeveloperEmail = 'trackasia@trackasia.org'
+    trackasiaDeveloperOrganization = 'Trackasia'
+    trackasiaDeveloperOrganizationUrl = 'http://www.track-asia.com'
+    trackasiaDeveloperId = 'trackasia'
+    trackasiaArtifactUrl = 'https://github.com/track-asia/trackasia-java'
+    trackasiaArtifactVcsUrl = 'https://github.com/track-asia/trackasia-java.git'
+    trackasiaArtifactScmUrl = 'scm:git@github.com:track-asia/trackasia-java.git'
+    trackasiaArtifactLicenseName = 'The Apache Software License, Version 2.0'
+    trackasiaArtifactLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    versionName = "1.0.0"
     isSnapshot = isSnapshot()
 }
 

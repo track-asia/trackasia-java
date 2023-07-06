@@ -1,10 +1,10 @@
 ext {
-    trackasiaArtifactGroupId = 'com.track-asia.gl'
+    trackasiaArtifactGroupId = 'com.track-asia'
     trackasiaArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
     trackasiaArtifactTitle = 'Trackasia Android Java Utilities'
     trackasiaArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')
     trackasiaDeveloperName = 'Trackasia'
-    trackasiaDeveloperEmail = 'trackasia@trackasia.org'
+    trackasiaDeveloperEmail = 'trackasia@track-asia.com'
     trackasiaDeveloperOrganization = 'Trackasia'
     trackasiaDeveloperOrganizationUrl = 'http://www.track-asia.com'
     trackasiaDeveloperId = 'trackasia'

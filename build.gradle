@@ -6,6 +6,7 @@ buildscript {
 
     repositories {
         maven { url 'https://plugins.gradle.org/m2' }
+        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
         jcenter()
@@ -90,7 +91,7 @@ subprojects { subproject ->
 
     artifacts {
         archives sourcesJar
-        archives javadocJar
+        // archives javadocJar
     }
 }
 

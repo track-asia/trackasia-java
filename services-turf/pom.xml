@@ -8,22 +8,32 @@
     <version>1.0.0</version>
   </parent>
   
-  <groupId>com.track-asia</groupId>
   <artifactId>services-turf</artifactId>
   <version>1.0.0</version>
   <name>services-turf</name>
+  <packaging>jar</packaging>
 
   <properties>
+    <github.global.server>github</github.global.server>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
-  
-  
+
   <dependencies>
-    <!-- Thêm dependencies của bạn ở đây, ví dụ: -->
     <dependency>
-      <groupId>services-turf</groupId>
-      <artifactId>trackasia</artifactId>
-      <version>1.0.1</version>
+      <groupId>androidx.annotation</groupId>
+      <artifactId>annotation</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
+    </dependency>
+    <dependency>
+      <groupId>com.mapbox.mapboxsdk</groupId>
+      <artifactId>mapbox-sdk-services</artifactId>
+      <version>5.8.0</version>
     </dependency>
   </dependencies>
 
@@ -32,7 +42,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <!-- <version>3.8.1</version> -->
+        <version>3.8.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>

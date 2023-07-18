@@ -40,7 +40,7 @@ afterEvaluate {
                         developer {
                             id = project.ext.trackasiaDeveloperId
                             name = project.ext.trackasiaDeveloperName
-                            email = 'trackasia@trackasia.org'
+                            email = 'trackasia@track-asia.com'
                         }
                     }
                     scm {
@@ -55,10 +55,10 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/track-asia.com/trackasia-java"
+                url = "https://maven.pkg.github.com/track-asia/trackasia-java"
                 credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
+                    username = "sunny0092" //System.getenv("GITHUB_ACTOR")
+                    password = "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"//System.getenv("GITHUB_TOKEN")
                 }
             }
         }

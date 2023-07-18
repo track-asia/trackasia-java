@@ -2,24 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.track-asia</groupId>
-  <artifactId>trackasia</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>trackasia-java</name>
-
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub Track-asia Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/track-asia/trackasia-java</url>
-    </repository>
-  </distributionManagement>
+  <parent>
+    <groupId>com.track-asia</groupId>
+    <artifactId>trackasia</artifactId>
+    <version>1.0.0</version>
+  </parent>
   
-  <modules>
-    <module>services-geojson</module>
-    <module>services-turf</module>
-  </modules>
+  <groupId>com.track-asia</groupId>
+  <artifactId>services-turf</artifactId>
+  <version>1.0.0</version>
+  <name>services-turf</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  
+  <dependencies>
+    <!-- Thêm dependencies của bạn ở đây, ví dụ: -->
+    <dependency>
+      <groupId>services-turf</groupId>
+      <artifactId>trackasia</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>

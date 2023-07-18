@@ -1,5 +1,5 @@
-ext["signing.keyId"] = ''
-ext["signing.password"] = ''
+ext["signing.keyId"] = '2DBE4CC0'
+ext["signing.password"] = 'advn'
 ext["signing.secretKeyRingFile"] = "${projectDir}/../signing-key.gpg"
 ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''

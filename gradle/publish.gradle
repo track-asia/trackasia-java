@@ -58,7 +58,7 @@ afterEvaluate {
                 url = "https://maven.pkg.github.com/track-asia/trackasia-java"
                 credentials {
                     username = "sunny0092" //System.getenv("GITHUB_ACTOR")
-                    password = "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"//System.getenv("GITHUB_TOKEN")
+                    password = "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"//System.getenv("GITHUB_TOKEN")
                 }
             }
         }

@@ -1,5 +1,5 @@
 ext {
-    trackasiaArtifactGroupId = 'com.trackasia'
+    trackasiaArtifactGroupId = 'io.github.track-asia'
     trackasiaArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
     trackasiaArtifactTitle = 'Trackasia Android Java Utilities'
     trackasiaArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')

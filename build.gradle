@@ -96,3 +96,16 @@ subprojects { subproject ->
 apply from: "${rootDir}/gradle/publish-root.gradle"
 
 defaultTasks('clean', 'build')
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            useStaging = !project.ext.isSnapshot
+            stagingProfileId = sonatypeStagingProfileId
+            username = ossrhUsername
+            password = ossrhPassword
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}

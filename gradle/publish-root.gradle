@@ -1,9 +1,9 @@
-ext["signing.keyId"] = '2DBE4CC0'
-ext["signing.password"] = 'advn'
+ext["signing.keyId"] = 'A0455BA3'
+ext["signing.password"] = 'secret'
 ext["signing.secretKeyRingFile"] = "${projectDir}/../signing-key.gpg"
-ext["ossrhUsername"] = 'sunny0092'
-ext["ossrhPassword"] = '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'
-ext["sonatypeStagingProfileId"] = ''
+ext["ossrhUsername"] = 'sangnguyen'
+ext["ossrhPassword"] = '@AbcSang070992'
+ext["sonatypeStagingProfileId"] = '31754de92605f9'
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {

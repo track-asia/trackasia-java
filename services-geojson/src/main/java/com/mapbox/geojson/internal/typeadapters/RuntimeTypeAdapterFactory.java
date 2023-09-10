@@ -95,6 +95,7 @@ import com.google.gson.stream.JsonWriter;
  * Both the type field name ({@code "type"}) and the type labels ({@code
  * "Rectangle"}) are configurable.
  *
+ * <h3>Registering Types</h3>
  * Create a {@code RuntimeTypeAdapterFactory} by passing the base type and type field
  * name to the {@link #of} factory method. If you don't supply an explicit type
  * field name, {@code "type"} will be used. <pre>   {@code
@@ -130,8 +131,8 @@ import com.google.gson.stream.JsonWriter;
 public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
   private final Class<?> baseType;
   private final String typeFieldName;
-  private final Map<String, Class<?>> labelToSubtype = new LinkedHashMap<>();
-  private final Map<Class<?>, String> subtypeToLabel = new LinkedHashMap<>();
+  private final Map<String, Class<?>> labelToSubtype = new LinkedHashMap<String, Class<?>>();
+  private final Map<Class<?>, String> subtypeToLabel = new LinkedHashMap<Class<?>, String>();
   private final boolean maintainType;
 
   private RuntimeTypeAdapterFactory(Class<?> baseType, String typeFieldName, boolean maintainType) {
@@ -152,12 +153,11 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
    * @param baseType class of base type
    * @param typeFieldName field name used to distinguish subtypes
    * @param maintainType true if the type will be stored in pojo, false - otherwise
-   * @return The RuntimeTypeAdaptorFactory instance created
    */
   public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType,
                                                     String typeFieldName,
                                                     boolean maintainType) {
-    return new RuntimeTypeAdapterFactory<>(baseType, typeFieldName, maintainType);
+    return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName, maintainType);
   }
 
   /**
@@ -167,10 +167,9 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
    * @param <T> base type
    * @param baseType class of base type
    * @param typeFieldName field name used to distinguish subtypes
-   * @return The RuntimeTypeAdaptorFactory instance created
    */
   public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType, String typeFieldName) {
-    return new RuntimeTypeAdapterFactory<>(baseType, typeFieldName, false);
+    return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName, false);
   }
 
   /**
@@ -179,10 +178,9 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
    *
    * @param <T> base type
    * @param baseType class of base type
-   * @return The RuntimeTypeAdaptorFactory instance created
    */
   public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType) {
-    return new RuntimeTypeAdapterFactory<>(baseType, "type", false);
+    return new RuntimeTypeAdapterFactory<T>(baseType, "type", false);
   }
 
   /**
@@ -193,7 +191,6 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
    * @param label string value for field that distinguishes subtypes
    * @throws IllegalArgumentException if either {@code type} or {@code label}
    *     have already been registered on this type adapter.
-   * @return The same object it is called on, so the calls can be chained
    */
   public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type, String label) {
     if (type == null || label == null) {
@@ -214,9 +211,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
    * @param type type name
    * @throws IllegalArgumentException if either {@code type} or its simple name
    *     have already been registered on this type adapter.
-   * @return The same object it is called on, so the calls can be chained
    */
-  @SuppressWarnings("unused")
   public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type) {
     return registerSubtype(type, type.getSimpleName());
   }
@@ -228,9 +223,9 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
     }
 
     final Map<String, TypeAdapter<?>> labelToDelegate
-            = new LinkedHashMap<>();
+            = new LinkedHashMap<String, TypeAdapter<?>>();
     final Map<Class<?>, TypeAdapter<?>> subtypeToDelegate
-            = new LinkedHashMap<>();
+            = new LinkedHashMap<Class<?>, TypeAdapter<?>>();
     for (Map.Entry<String, Class<?>> entry : labelToSubtype.entrySet()) {
       TypeAdapter<?> delegate =
         gson.getDelegateAdapter(this, TypeToken.get(entry.getValue()));
@@ -238,7 +233,6 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
       subtypeToDelegate.put(entry.getValue(), delegate);
     }
 
-    //noinspection RedundantThrows
     return new TypeAdapter<R>() {
       @Override public R read(JsonReader in) throws IOException {
         JsonElement jsonElement = Streams.parse(in);

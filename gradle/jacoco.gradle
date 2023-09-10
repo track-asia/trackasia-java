@@ -4,14 +4,19 @@ jacoco {
     toolVersion = pluginVersion.jacoco
 }
 
+test {
+    jacoco {
+        excludes.add("**/samples/**")
+    }
+}
+
 jacocoTestReport{
     dependsOn test
     group = 'Coverage reports'
     description = 'Generates a test coverage report for a project'
 
     reports {
-        xml.required = false
-        csv.required = false
-        html.required = true
+        xml.enabled = true
+        html.enabled = true
     }
 }

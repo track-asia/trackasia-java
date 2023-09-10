@@ -1,5 +1,23 @@
-rootProject.name = "Trackasia-java"
-println('Trackasia Java combined build initializing')
+rootProject.name = "trackasia-java"
 
-include 'services-geojson'
-include 'services-turf'
+include ':services'
+include ':services-directions-models'
+include ':services-speech'
+include ':services-core'
+include ':services-geojson'
+include ':services-directions'
+include ':services-geocoding'
+include ':services-turf'
+include ':services-optimization'
+include ':services-matrix'
+include ':services-matching'
+include ':services-staticmap'
+include ':services-tilequery'
+include ':services-route-tiles'
+include ':services-directions-refresh'
+include ':services-directions-refresh-models'
+include ':services-isochrone'
+include 'samples'
+
+include 'services-cli'
+

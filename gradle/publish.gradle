@@ -1,7 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
-
 apply from: file("${rootDir}/gradle/artifact-settings.gradle")
 apply from: file("${rootDir}/gradle/publish-root.gradle")
 
@@ -9,14 +8,12 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                groupId project.ext.trackasiaArtifactGroupId
-                artifactId project.ext.trackasiaArtifactId
+                groupId project.ext.trackAsiaArtifactGroupId
+                artifactId project.ext.trackAsiaArtifactId
 
                 from components.java
 
                 version project.ext.versionName
-
-                project.logger.info("Publishing project with version: ${versionName}")
 
                 artifact sourcesJar {
                     classifier "sources"
@@ -26,39 +23,28 @@ afterEvaluate {
                     classifier "javadoc"
                 }
 
-                pom {
-                    name = project.ext.trackasiaArtifactTitle
-                    description = project.ext.trackasiaArtifactTitle
-                    url = project.ext.trackasiaArtifactUrl
+                 pom {
+                    name = project.ext.trackAsiaArtifactTitle
+                    description = project.ext.trackAsiaArtifactTitle
+                    url = project.ext.trackAsiaArtifactUrl
                     licenses {
                         license {
-                            name = project.ext.trackasiaArtifactLicenseName
-                            url = project.ext.trackasiaArtifactLicenseUrl
+                            name = project.ext.trackAsiaArtifactLicenseName
+                            url = project.ext.trackAsiaArtifactLicenseUrl
                         }
                     }
                     developers {
                         developer {
-                            id = project.ext.trackasiaDeveloperId
-                            name = project.ext.trackasiaDeveloperName
+                            id = project.ext.trackAsiaDeveloperId
+                            name = project.ext.trackAsiaDeveloperName
                             email = 'trackasia@track-asia.com'
                         }
                     }
                     scm {
-                        connection = project.ext.trackasiaArtifactScmUrl
-                        developerConnection = project.ext.trackasiaArtifactScmUrl
-                        url = project.ext.trackasiaArtifactUrl
+                        connection = project.ext.trackAsiaArtifactScmUrl
+                        developerConnection = project.ext.trackAsiaArtifactScmUrl
+                        url = project.ext.trackAsiaArtifactUrl
                     }
-                }
-            }
-        }
-
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/track-asia/trackasia-java"
-                credentials {
-                    username = "sunny0092" //System.getenv("GITHUB_ACTOR")
-                    password = "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"//System.getenv("GITHUB_TOKEN")
                 }
             }
         }

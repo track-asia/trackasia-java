@@ -58,10 +58,10 @@ subprojects {
     errorprone dependenciesList.errorprone
 
     // Test Dependencies
-    testImplementation dependenciesList.junit
-    testImplementation dependenciesList.hamcrestJunit
-    testImplementation dependenciesList.mockito
-    testImplementation dependenciesList.googleTruth
+    testCompile dependenciesList.junit
+    testCompile dependenciesList.hamcrestJunit
+    testCompile dependenciesList.mockito
+    testCompile dependenciesList.googleTruth
   }
 }
 
@@ -83,12 +83,22 @@ def TESTABLE_MODULES = ["services",
                         "services-directions-refresh-models",
                         "services-isochrone"]
 
-def RELEASE_MODULES = ["services",
-                       "services-core",
-                       "services-geojson",
-                       "services-turf",
-                       "services-directions-models",
-                       "services-directions-refresh-models"]
+//def RELEASE_MODULES = [
+//                       "services-geocoding",
+//                       "services-directions",
+//                       "services-directions-refresh"]
+
+ def RELEASE_MODULES = [
+//                        "services",
+//                        "services-core",
+//                        "services-geojson",
+                        "services-geocoding",
+//                        "services-turf",
+                        "services-directions",
+                        "services-directions-refresh",
+//                        "services-directions-models",
+//                        "services-directions-refresh-models"
+ ]
 
 subprojects { subproject ->
 
@@ -132,13 +142,13 @@ task clean(type: Delete) {
 apply from: "${rootDir}/gradle/publish-root.gradle"
 // Set up Sonatype repository
 nexusPublishing {
-    repositories {
-        sonatype {
-            stagingProfileId = sonatypeStagingProfileId
-            username = ossrhUsername
-            password = ossrhPassword
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))            
-        }
+  repositories {
+    sonatype {
+      stagingProfileId = sonatypeStagingProfileId
+      username = ossrhUsername
+      password = ossrhPassword
+      nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+      snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
     }
+  }
 }

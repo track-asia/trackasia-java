@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
+
 apply from: file("${rootDir}/gradle/artifact-settings.gradle")
 apply from: file("${rootDir}/gradle/publish-root.gradle")
 
@@ -15,6 +16,8 @@ afterEvaluate {
 
                 version project.ext.versionName
 
+                project.logger.info("Publishing project with version: ${versionName}")
+
                 artifact sourcesJar {
                     classifier "sources"
                 }
@@ -23,7 +26,7 @@ afterEvaluate {
                     classifier "javadoc"
                 }
 
-                 pom {
+                pom {
                     name = project.ext.trackAsiaArtifactTitle
                     description = project.ext.trackAsiaArtifactTitle
                     url = project.ext.trackAsiaArtifactUrl
@@ -45,6 +48,17 @@ afterEvaluate {
                         developerConnection = project.ext.trackAsiaArtifactScmUrl
                         url = project.ext.trackAsiaArtifactUrl
                     }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = "https://maven.pkg.github.com/track-asia/trackasia-java"
+                credentials {
+                    username = "sunny0092" //System.getenv("GITHUB_ACTOR")
+                    password = "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"//System.getenv("GITHUB_TOKEN")
                 }
             }
         }

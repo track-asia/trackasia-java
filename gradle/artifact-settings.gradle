@@ -1,11 +1,11 @@
 ext {
     trackAsiaArtifactGroupId = 'io.github.track-asia'
     trackAsiaArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
-    trackAsiaArtifactTitle = 'TrackAsia Android SDK'
+    trackAsiaArtifactTitle = 'Trackasia Android Java Utilities'
     trackAsiaArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')
-    trackAsiaDeveloperName = 'TrackAsia'
+    trackAsiaDeveloperName = 'Trackasia'
     trackAsiaDeveloperEmail = 'trackasia@track-asia.com'
-    trackAsiaDeveloperOrganization = 'TrackAsia'
+    trackAsiaDeveloperOrganization = 'Trackasia'
     trackAsiaDeveloperOrganizationUrl = 'http://www.track-asia.com'
     trackAsiaDeveloperId = 'trackasia'
     trackAsiaArtifactUrl = 'https://github.com/track-asia/trackasia-java'
@@ -13,13 +13,16 @@ ext {
     trackAsiaArtifactScmUrl = 'scm:git@github.com:track-asia/trackasia-java.git'
     trackAsiaArtifactLicenseName = 'The Apache Software License, Version 2.0'
     trackAsiaArtifactLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    versionName = getVersionName()
+    versionName = "1.0.4"
+//    isSnapshot = isSnapshot()
 }
 
 def getVersionName() {
-    def cmd = "git describe --tag"
+    def cmd = "git describe --tag --abbrev=0"
     def version = cmd.execute().text.trim()
-    return isSnapshot() ? getSnapshotVersion(version) : getReleaseVersion(version)
+    def deducedVersion = isSnapshot() ? getSnapshotVersion(version) : getReleaseVersion(version)
+    project.logger.info("Project version detected: ${deducedVersion}")
+    return deducedVersion
 }
 
 def isSnapshot() {
@@ -29,7 +32,7 @@ def isSnapshot() {
 }
 
 private static def getReleaseVersion(String version) {
-    return version
+    return version.substring(1)
 }
 
 private static def getSnapshotVersion(String version) {

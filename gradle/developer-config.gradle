@@ -5,7 +5,7 @@ task accessToken {
 
         if (mapboxAccessToken == "null") {
             logger.error("warning: MAPBOX_ACCESS_TOKEN environment variable is not set.")
-            logger.error("Note: It is recommended to edit the value in res/values/deÏveloper-config.xml file.")
+            logger.error("Note: It is recommended to edit the value in res/values/developer-config.xml file.")
             mapboxAccessToken = "YOUR_MAPBOX_ACCESS_TOKEN_GOES_HERE";
         }
 

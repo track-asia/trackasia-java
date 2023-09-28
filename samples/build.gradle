@@ -30,6 +30,6 @@ dependencies {
 
 buildConfig {
     packageName = 'com.mapbox.sample'
-    buildConfigField 'String', 'MAPBOX_ACCESS_TOKEN', System.getenv("MAPBOX_ACCESS_TOKEN")
+    buildConfigField 'String', 'MAPBOX_ACCESS_TOKEN', "pk.eyJ1Ijoic2FuZ25ndXllbjI1IiwiYSI6ImNsMGU0djFicjBmYzczam4wbnpmdjVrcGcifQ.s-R3of1BK-vomakvEGkgYw"
 }
 

@@ -23,7 +23,7 @@ configurations {
 }
 
 buildConfig {
-  packageName = 'org.trackasia.core'
+  packageName = 'com.trackasia.core'
   version = project.ext.versionName
   buildConfigField 'String', 'GIT_REVISION', getGitRevision()
 }

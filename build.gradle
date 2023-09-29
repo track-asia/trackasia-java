@@ -89,15 +89,15 @@ def TESTABLE_MODULES = ["services",
 //                       "services-directions-refresh"]
 
  def RELEASE_MODULES = [
-//                        "services",
-//                        "services-core",
-//                        "services-geojson",
+                        "services",
+                        "services-core",
+                        "services-geojson",
                         "services-geocoding",
-//                        "services-turf",
+                        "services-turf",
                         "services-directions",
                         "services-directions-refresh",
-//                        "services-directions-models",
-//                        "services-directions-refresh-models"
+                        "services-directions-models",
+                        "services-directions-refresh-models"
  ]
 
 subprojects { subproject ->

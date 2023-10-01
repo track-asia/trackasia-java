@@ -31,7 +31,7 @@ public final class PolylineUtils {
    * @param encodedPath a String representing an encoded path string
    * @param precision   OSRMv4 uses 6, OSRMv5 and Google uses 5
    * @return list of {@link Point} making up the line
-   * @see <a href="https://github.com/mapbox/polyline/blob/master/src/polyline.js">Part of algorithm came from this source</a>
+   * @see <a href="https://github.com/track-asia/polyline/blob/master/src/polyline.js">Part of algorithm came from this source</a>
    * @see <a href="https://github.com/googlemaps/android-maps-utils/blob/master/library/src/com/google/maps/android/PolyUtil.java">Part of algorithm came from this source.</a>
    * @since 1.0.0
    */

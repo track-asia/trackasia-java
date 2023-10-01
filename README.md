@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://www.mapbox.com/android-docs/java-sdk/overview/"><img src="https://github.com/mapbox/mapbox-java/blob/main/.github/mbxservice-logo.png" alt="Mapbox Service" width="400"></a>
+  <a href="https://www.mapbox.com/android-docs/java-sdk/overview/"><img src="https://github.com/track-asia/mapbox-java/blob/main/.github/mbxservice-logo.png" alt="Mapbox Service" width="400"></a>
 </h1>
 
 <h4 align="center">Build powerful Java apps using Mapbox's tools and services</h4>
@@ -10,11 +10,11 @@
     <img src="https://maven-badges.herokuapp.com/maven-central/com.mapbox.mapboxsdk/mapbox-sdk-services/badge.svg"
          alt="Maven Central">
   </a>
-  <a href="https://circleci.com/gh/mapbox/mapbox-java">
-    <img src="https://circleci.com/gh/mapbox/mapbox-java.svg?style=shield&circle-token=:circle-token">
+  <a href="https://circleci.com/gh/track-asia/mapbox-java">
+    <img src="https://circleci.com/gh/track-asia/mapbox-java.svg?style=shield&circle-token=:circle-token">
   </a>
-  <a href="https://codecov.io/gh/mapbox/mapbox-java">
-    <img src="https://codecov.io/gh/mapbox/mapbox-java/branch/main/graph/badge.svg">
+  <a href="https://codecov.io/gh/track-asia/mapbox-java">
+    <img src="https://codecov.io/gh/track-asia/mapbox-java/branch/main/graph/badge.svg">
     </a>
 </p>
 <br>
@@ -32,12 +32,12 @@ You'll find all of the documentation for this SDK on [our Mapbox Java documentat
 ## Getting Help
 
 - **Need help with your code?**: Look for previous questions on the [#mapbox tag](https://stackoverflow.com/questions/tagged/mapbox+android) — or [ask a new question](https://stackoverflow.com/questions/tagged/mapbox+android).
-- **Have a bug to report?** [Open an issue](https://github.com/mapbox/mapbox-java/issues/new). If possible, include the version of Mapbox Java, a full log, and a project that shows the issue.
-- **Have a feature request?** [Open an issue](https://github.com/mapbox/mapbox-java/issues/new). Tell us what the feature should do and why you want the feature.
+- **Have a bug to report?** [Open an issue](https://github.com/track-asia/mapbox-java/issues/new). If possible, include the version of Mapbox Java, a full log, and a project that shows the issue.
+- **Have a feature request?** [Open an issue](https://github.com/track-asia/mapbox-java/issues/new). Tell us what the feature should do and why you want the feature.
 
 ## Using Snapshots
 
-If you want to test recent bugfixes or features that have not been packaged in an official release yet, you can use a `-SNAPSHOT` release of the current development version of the Mapbox Java SDK via Gradle, available on [JFrog](https://oss.jfrog.org/artifactory/oss-snapshot-local/com/mapbox/mapboxsdk/). There are several different snapshots built nightly. Feel free to use any of the modules as needed.
+If you want to test recent bugfixes or features that have not been packaged in an official release yet, you can use a `-SNAPSHOT` release of the current development version of the Mapbox Java SDK via Gradle, available on [JFrog](https://oss.jfrog.org/artifactory/oss-snapshot-local/com/track-asia/mapboxsdk/). There are several different snapshots built nightly. Feel free to use any of the modules as needed.
 
 ```gradle
 repositories {
@@ -52,8 +52,8 @@ dependencies {
 
 ## Sample code
 
-View [the CLI samples](https://github.com/mapbox/mapbox-java/tree/main/samples/src/main/java/com/mapbox/samples) or download the [Mapbox Demo App](https://play.google.com/store/apps/details?id=com.mapbox.mapboxandroiddemo) to see what's possible with the Mapbox Java SDK. You can also visit the [Mapbox Android examples page](https://www.mapbox.com/android-docs/java-sdk/examples) for additional code examples.
+View [the CLI samples](https://github.com/track-asia/mapbox-java/tree/main/samples/src/main/java/com/track-asia/samples) or download the [Mapbox Demo App](https://play.google.com/store/apps/details?id=com.mapbox.mapboxandroiddemo) to see what's possible with the Mapbox Java SDK. You can also visit the [Mapbox Android examples page](https://www.mapbox.com/android-docs/java-sdk/examples) for additional code examples.
 
 ## Contributing
 
-All libraries are contained within the `mapbox` folder. You can import the project using Android Studio or IntelliJ IDEA. Read [the contribution guide](https://github.com/mapbox/mapbox-java/blob/main/CONTRIBUTING.md) to get setup properly.
+All libraries are contained within the `mapbox` folder. You can import the project using Android Studio or IntelliJ IDEA. Read [the contribution guide](https://github.com/track-asia/mapbox-java/blob/main/CONTRIBUTING.md) to get setup properly.

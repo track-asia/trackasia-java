@@ -10,7 +10,7 @@ Your journey will start with getting the source code, adding your Mapbox access 
 
 Clone the git repository:
 
-    git clone https://github.com/mapbox/mapbox-java.git
+    git clone https://github.com/track-asia/mapbox-java.git
     cd mapbox-java
 
 ## 2: Adding Mapbox access token

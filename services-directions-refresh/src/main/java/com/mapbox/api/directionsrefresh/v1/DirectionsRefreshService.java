@@ -28,7 +28,7 @@ public interface DirectionsRefreshService {
    * @return the {@link DirectionsRefreshResponse} in a Call wrapper
    * @since 4.4.0
    */
-  @GET("directions-refresh/v1/mapbox/driving-traffic/{request_id}/{route_index}/{leg_index}")
+  @GET("directions-refresh/v1/track-asia/driving-traffic/{request_id}/{route_index}/{leg_index}")
   Call<DirectionsRefreshResponse> getCall(
     @Header("User-Agent") String userAgent,
     @Path("request_id") String requestId,

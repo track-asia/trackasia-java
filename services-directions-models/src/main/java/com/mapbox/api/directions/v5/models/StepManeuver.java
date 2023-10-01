@@ -238,7 +238,7 @@ public abstract class StepManeuver extends DirectionsJsonObject {
    * SDK for Android or using the OSRM-Text-Instructions.java project in Project-OSRM.
    *
    * @return String with instruction
-   * @see <a href='https://github.com/mapbox/mapbox-navigation-android'>Navigation SDK</a>
+   * @see <a href='https://github.com/track-asia/trackasia-navigation-android'>Navigation SDK</a>
    * @see <a href='https://github.com/Project-OSRM/osrm-text-instructions.java'>
    *   OSRM-Text-Instructions.java</a>
    * @since 1.0.0
@@ -367,7 +367,7 @@ public abstract class StepManeuver extends DirectionsJsonObject {
      *
      * @param instruction String with instruction
      * @return this builder for chaining options together
-     * @see <a href='https://github.com/mapbox/mapbox-navigation-android'>Navigation SDK</a>
+     * @see <a href='https://github.com/track-asia/trackasia-navigation-android'>Navigation SDK</a>
      * @see <a href='https://github.com/Project-OSRM/osrm-text-instructions.java'>OSRM-Text-Instructions.java</a>
      * @since 3.0.0
      */

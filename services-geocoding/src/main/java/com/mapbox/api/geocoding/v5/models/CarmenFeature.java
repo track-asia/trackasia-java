@@ -31,7 +31,7 @@ import java.util.List;
  * Note: this class doesn't actually extend Feature due to the inherit rule in AutoValue (see link
  * below).
  *
- * @see <a href="https://github.com/mapbox/carmen/blob/master/carmen-geojson.md">Carmen Geojson information</a>
+ * @see <a href="https://github.com/track-asia/carmen/blob/master/carmen-geojson.md">Carmen Geojson information</a>
  * @see <a href="https://www.mapbox.com/api-documentation/search/#geocoding">Mapbox geocoder documentation</a>
  * @see <a href='geojson.org/geojson-spec.html#feature-objects'>Official GeoJson Feature Specifications</a>
  * @see <a href="https://github.com/google/auto/blob/master/value/userguide/howto.md#inherit">AutoValue inherit rule</a>

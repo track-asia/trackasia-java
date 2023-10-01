@@ -151,7 +151,7 @@ public class BannerComponentTest extends TestUtils {
     BannerComponents bannerComponents = BannerComponents.builder()
       .text("I 95")
       .type("icon")
-      .imageBaseUrl("https://s3.amazonaws.com/mapbox/shields/v3/i-95")
+      .imageBaseUrl("https://s3.amazonaws.com/track-asia/shields/v3/i-95")
       .build();
 
     String jsonString = bannerComponents.toJson();

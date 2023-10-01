@@ -64,7 +64,7 @@ public class MapboxStaticMapTest extends TestUtils {
       .accessToken(ACCESS_TOKEN)
       .baseUrl("https://foobar.com")
       .build();
-    assertTrue(staticMap.url().toString().startsWith("https://foobar.com/styles/v1/mapbox/"));
+    assertTrue(staticMap.url().toString().startsWith("https://foobar.com/styles/v1/track-asia/"));
   }
 
   @Test
@@ -82,7 +82,7 @@ public class MapboxStaticMapTest extends TestUtils {
       .accessToken(ACCESS_TOKEN)
       .styleId(StaticMapCriteria.DARK_STYLE)
       .build();
-    assertTrue(staticMap.url().toString().contains("styles/v1/mapbox/dark-v10/static/"));
+    assertTrue(staticMap.url().toString().contains("styles/v1/track-asia/dark-v10/static/"));
   }
 
   @Test

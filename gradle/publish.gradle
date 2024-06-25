@@ -9,8 +9,8 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                groupId project.ext.trackAsiaArtifactGroupId
-                artifactId project.ext.trackAsiaArtifactId
+                groupId project.ext.mapLibreArtifactGroupId
+                artifactId project.ext.mapLibreArtifactId
 
                 from components.java
 
@@ -19,34 +19,34 @@ afterEvaluate {
                 project.logger.info("Publishing project with version: ${versionName}")
 
                 artifact sourcesJar {
-                    classifier "sources"
+                    archiveClassifier.set("sources")
                 }
 
                 artifact javadocJar {
-                    classifier "javadoc"
+                    archiveClassifier.set("javadoc")
                 }
 
                 pom {
-                    name = project.ext.trackAsiaArtifactTitle
-                    description = project.ext.trackAsiaArtifactTitle
-                    url = project.ext.trackAsiaArtifactUrl
+                    name = project.ext.mapLibreArtifactTitle
+                    description = project.ext.mapLibreArtifactTitle
+                    url = project.ext.mapLibreArtifactUrl
                     licenses {
                         license {
-                            name = project.ext.trackAsiaArtifactLicenseName
-                            url = project.ext.trackAsiaArtifactLicenseUrl
+                            name = project.ext.mapLibreArtifactLicenseName
+                            url = project.ext.mapLibreArtifactLicenseUrl
                         }
                     }
                     developers {
                         developer {
-                            id = project.ext.trackAsiaDeveloperId
-                            name = project.ext.trackAsiaDeveloperName
-                            email = 'trackasia@track-asia.com'
+                            id = project.ext.mapLibreDeveloperId
+                            name = project.ext.mapLibreDeveloperName
+                            email = 'trackasia@trackasia.org'
                         }
                     }
                     scm {
-                        connection = project.ext.trackAsiaArtifactScmUrl
-                        developerConnection = project.ext.trackAsiaArtifactScmUrl
-                        url = project.ext.trackAsiaArtifactUrl
+                        connection = project.ext.mapLibreArtifactScmUrl
+                        developerConnection = project.ext.mapLibreArtifactScmUrl
+                        url = project.ext.mapLibreArtifactUrl
                     }
                 }
             }
@@ -57,8 +57,8 @@ afterEvaluate {
                 name = "GitHubPackages"
                 url = "https://maven.pkg.github.com/track-asia/trackasia-java"
                 credentials {
-                    username = "sunny0092" //System.getenv("GITHUB_ACTOR")
-                    password = "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"//System.getenv("GITHUB_TOKEN")
+                    username = "sunny0092"
+                    password = "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"
                 }
             }
         }

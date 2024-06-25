@@ -1,38 +1,32 @@
 ext {
-    trackAsiaArtifactGroupId = 'io.github.track-asia'
-    trackAsiaArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
-    trackAsiaArtifactTitle = 'Trackasia Android Java Utilities'
-    trackAsiaArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')
-    trackAsiaDeveloperName = 'Trackasia'
-    trackAsiaDeveloperEmail = 'trackasia@track-asia.com'
-    trackAsiaDeveloperOrganization = 'Trackasia'
-    trackAsiaDeveloperOrganizationUrl = 'http://www.track-asia.com'
-    trackAsiaDeveloperId = 'trackasia'
-    trackAsiaArtifactUrl = 'https://github.com/track-asia/trackasia-java'
-    trackAsiaArtifactVcsUrl = 'https://github.com/track-asia/trackasia-java.git'
-    trackAsiaArtifactScmUrl = 'scm:git@github.com:track-asia/trackasia-java.git'
-    trackAsiaArtifactLicenseName = 'The Apache Software License, Version 2.0'
-    trackAsiaArtifactLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    versionName = "1.0.5"
-//    isSnapshot = isSnapshot()
+    mapLibreArtifactGroupId = 'io.github.track-asia'
+    mapLibreArtifactId = project.hasProperty('POM_ARTIFACT_ID') ? project.property('POM_ARTIFACT_ID') : System.getenv('POM_ARTIFACT_ID')
+    mapLibreArtifactTitle = 'TrackAsia Android Java Utilities'
+    mapLibreArtifactDescription = project.hasProperty('POM_DESCRIPTION') ? project.property('POM_DESCRIPTION') : System.getenv('POM_DESCRIPTION')
+    mapLibreDeveloperName = 'TrackAsia'
+    mapLibreDeveloperEmail = 'trackasia@trackasia.org'
+    mapLibreDeveloperOrganization = 'TrackAsia'
+    mapLibreDeveloperOrganizationUrl = 'http://www.trackasia.org'
+    mapLibreDeveloperId = 'trackasia'
+    mapLibreArtifactUrl = 'https://github.com/track-asia/trackasia-java'
+    mapLibreArtifactVcsUrl = 'https://github.com/track-asia/trackasia-java.git'
+    mapLibreArtifactScmUrl = 'scm:git@github.com:track-asia/trackasia-java.git'
+    mapLibreArtifactLicenseName = 'The Apache Software License, Version 2.0'
+    mapLibreArtifactLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    versionName = '2.0.0'
+    isSnapshot = true
 }
 
 def getVersionName() {
-    def cmd = "git describe --tag --abbrev=0"
-    def version = cmd.execute().text.trim()
-    def deducedVersion = isSnapshot() ? getSnapshotVersion(version) : getReleaseVersion(version)
+    def version = System.getenv('VERSION')
+    def deducedVersion = isSnapshot() ? getSnapshotVersion(version) : version
     project.logger.info("Project version detected: ${deducedVersion}")
     return deducedVersion
 }
 
 def isSnapshot() {
-    return project.hasProperty("snapshot")
-            ? project.property("snapshot").toBoolean()
-            : false
-}
-
-private static def getReleaseVersion(String version) {
-    return version.substring(1)
+    def snapshotProp = findProperty("snapshot")
+    return snapshotProp ? snapshotProp.asBoolean() : false
 }
 
 private static def getSnapshotVersion(String version) {

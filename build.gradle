@@ -87,7 +87,6 @@ subprojects { subproject ->
     artifacts {
        archives sourcesJar
        archives javadocJar
-       archives file("$buildDir/outputs/aar/your-module-release.aar")
     }
 }
 
@@ -113,21 +112,3 @@ nexusPublishing {
        delayBetween = Duration.ofSeconds(10)
    }
 }
-
-// jreleaser {
-//     signing {
-//         active = 'ALWAYS'
-//         armored = true
-//     }
-//     deploy {
-//         maven {
-//             mavenCentral {
-//                 sonatype {
-//                     active = 'ALWAYS'
-//                     url = 'https://central.sonatype.com/api/v1/publisher'
-//                     stagingRepository('target/staging-deploy')
-//                 }
-//             }
-//         }
-//     }
-// }

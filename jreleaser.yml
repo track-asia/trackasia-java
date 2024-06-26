@@ -1,5 +1,0 @@
-jreleaser:
-  publish:
-    maven:
-      mavenCentral:
-        stagingRepository: target/staging-deploy

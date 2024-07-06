@@ -59,6 +59,7 @@ afterEvaluate {
                 credentials {
                     username = "sunny0092"
                     password = "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"
+                    password = "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"
                 }
             }
         }

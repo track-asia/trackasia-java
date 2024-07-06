@@ -80,35 +80,29 @@ subprojects { subproject ->
         from javadoc.destinationDir
     }
 
-    task buildAar(type: GradleBuild) {
-        tasks = ['assembleRelease']
-    }
-
     artifacts {
-       archives sourcesJar
-       archives javadocJar
+        archives sourcesJar
+        archives javadocJar
     }
 }
-
-
 
 apply from: "${rootDir}/gradle/publish-root.gradle"
 
 defaultTasks('clean', 'build')
 
 nexusPublishing {
-   repositories {
-       sonatype {
+    repositories {
+        sonatype {
 //            useStaging = !project.ext.isSnapshot
-           stagingProfileId = sonatypeStagingProfileId
-           username = ossrhUsername
-           password = ossrhPassword
-           nexusUrl.set(uri("https://central.sonatype.com/api/v1/publisher"))
-           snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-       }
-   }
-   transitionCheckOptions {
-       maxRetries = 120
-       delayBetween = Duration.ofSeconds(10)
-   }
+            stagingProfileId = sonatypeStagingProfileId
+            username = ossrhUsername
+            password = ossrhPassword
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+    transitionCheckOptions {
+        maxRetries = 120
+        delayBetween = Duration.ofSeconds(10)
+    }
 }

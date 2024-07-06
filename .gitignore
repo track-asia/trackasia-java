@@ -13,6 +13,8 @@ documentation
 build/
 /captures
 .externalNativeBuild
+services-geojson/bin/
+services-turf/bin/
 
 # Idea
 .idea
@@ -24,5 +26,4 @@ obj
 #MacOS
 .DS_Store
 /.java-version
-
-.history/
+/.history/

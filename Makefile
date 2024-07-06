@@ -7,6 +7,10 @@ test:
 build-release:
 	./gradlew assemble
 
+build-release-lib:
+#	./gradlew :services-geojson:assembleRelease
+#	./gradlew :services-turf:assembleRelease
+
 build-cli:
 	./gradlew shadowJar
 

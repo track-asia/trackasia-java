@@ -1,32 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>io.github.track-asia</groupId>
-  <artifactId>trackasia</artifactId>
+  <artifactId>track-asia</artifactId>
   <version>2.0.0</version>
   <packaging>pom</packaging>
-  <name>trackasia-plugins-android</name>
+  <name>trackasia-java</name>
 
-  <distributionManagement>
+  <repositories>
     <repository>
-      <id>trackasia</id>
-      <name>GitHub trackasia plugin android</name>
-      <url>https://maven.pkg.github.com/track-asia/trackasia-plugins-android</url>
+      <id>google</id>
+      <name>Google Maven</name>
+      <url>https://maven.google.com/</url>
     </repository>
-  </distributionManagement>
+  </repositories>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>com.track-asia</groupId>
+        <groupId>io.github.track-asia</groupId>
         <artifactId>android-sdk-geojson</artifactId>
         <version>2.0.0</version>
       </dependency>
       <dependency>
-        <groupId>com.track-asia</groupId>
+        <groupId>io.github.track-asia</groupId>
         <artifactId>android-sdk-turf</artifactId>
         <version>2.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>androidx.annotation</groupId>
+        <artifactId>annotation</artifactId>
+        <version>1.7.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.10.1</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -41,12 +50,32 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.13.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>com.simpligility.maven.plugins</groupId>
+        <artifactId>android-maven-plugin</artifactId>
+        <version>4.4.0</version>
+        <extensions>true</extensions>
+      </plugin>
     </plugins>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub sunny0092 Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/track-asia/trackasia-java</url>
+    </repository>
+  </distributionManagement>
+
+  <properties>
+      <github.owner>track-asia</github.owner>
+      <github.repo>trackasia-java</github.repo>
+      <gpg.skip>true</gpg.skip>
+  </properties>
 </project>

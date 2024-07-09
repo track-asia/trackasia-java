@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>io.github.track-asia</groupId>
-    <artifactId>android-sdk-turf</artifactId>
-    <version>2.0.0</version>
+    <artifactId>android-sdk-geojson</artifactId>
+    <version>2.1.9</version>
+    <packaging>jar</packaging>
     
     <name>Track Asia Java SDK</name>
     <description>Track Asia Java SDK</description>
@@ -44,11 +45,6 @@
     
     <dependencies>
         <dependency>
-            <groupId>io.github.track-asia</groupId>
-            <artifactId>android-sdk-geojson</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>androidx.annotation</groupId>
             <artifactId>annotation</artifactId>
             <version>1.7.1</version>
@@ -71,12 +67,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <properties>
-      <github.owner>track-asia</github.owner>
-      <github.repo>trackasia-java</github.repo>
-      <gpg.skip>true</gpg.skip>
-      <deploymentName>${project.artifactId} (${project.version})</deploymentName>
-    </properties>
+    
     <build>
         <plugins>
             <plugin>
@@ -107,54 +98,35 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <executable>gpg</executable>
-                    <keyname>CEC82C21F97B96B7C129306BD31D1FFB795690AE</keyname>
-                    <passphrase>${gpg.passphrase}</passphrase>
-                    <name>${deploymentName}</name>
+                      <executable>gpg</executable>
+                      <keyname>CEC82C21F97B96B7C129306BD31D1FFB795690AE</keyname>
+                      <passphrase>track-asia</passphrase>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.8.2</version>
-                <configuration>
-                    <goalPrefix>central-publishing</goalPrefix>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
+                        <id>generate-md5-asc</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>copy-resources</goal>
+                            <goal>run</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
+                            <target>
+                                <checksum file="target/${project.artifactId}-${project.version}.jar" fileext=".md5"/>
+                                <checksum file="target/${project.artifactId}-${project.version}.jar" algorithm="SHA-1" fileext=".sha1"/>
+                                <checksum file="target/${project.artifactId}-${project.version}.jar" fileext=".asc"/>
+                                <checksum file="target/${project.artifactId}-${project.version}-javadoc.jar" fileext=".md5"/>
+                                <checksum file="target/${project.artifactId}-${project.version}-javadoc.jar" algorithm="SHA-1" fileext=".sha1"/>
+                                <checksum file="target/${project.artifactId}-${project.version}-javadoc.jar" fileext=".asc"/>
+                                <checksum file="target/${project.build.finalName}.pom" fileext=".md5"/>
+                                <checksum file="target/${project.build.finalName}.pom" algorithm="SHA-1" fileext=".sha1"/>
+                                <checksum file="target/${project.build.finalName}.pom" fileext=".asc"/>
+                            </target>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -171,12 +143,12 @@
         </plugins>
     </build>
 
-    <!-- <distributionManagement>
+    <distributionManagement>
         <repository>
         <id>github</id>
         <name>GitHub sunny0092 Apache Maven Packages</name>
         <url>https://maven.pkg.github.com/track-asia/trackasia-java</url>
         </repository>
-    </distributionManagement> -->
+    </distributionManagement>
     
 </project>

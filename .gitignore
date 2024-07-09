@@ -27,3 +27,4 @@ obj
 .DS_Store
 /.java-version
 /.history/
+.env

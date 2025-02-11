@@ -11,7 +11,3 @@ This library currently uses gradle to build the root and the sub-projects. To bu
 ```bash
 ./gradlew clean build
 ```
-
-
-
-

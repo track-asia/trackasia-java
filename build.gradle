@@ -93,7 +93,7 @@ defaultTasks('clean', 'build')
 nexusPublishing {
     repositories {
         sonatype {
-//            useStaging = !project.ext.isSnapshot
+            useStaging = !project.ext.isSnapshot
             stagingProfileId = sonatypeStagingProfileId
             username = ossrhUsername
             password = ossrhPassword

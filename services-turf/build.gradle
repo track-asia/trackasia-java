@@ -1,4 +1,5 @@
 apply plugin: 'java-library'
+version = rootProject.file('VERSION').text.trim()
 
 dependencies {
   api project(":services-geojson")

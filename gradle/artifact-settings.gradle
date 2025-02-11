@@ -8,26 +8,26 @@ ext {
     trackAsiaDeveloperOrganization = 'TrackAsia'
     trackAsiaDeveloperOrganizationUrl = 'http://www.track-asia.com'
     trackAsiaDeveloperId = 'trackasia'
-    trackAsiaArtifactUrl = 'https://github.com/track-asia/trackasia-java'
-    trackAsiaArtifactVcsUrl = 'https://github.com/track-asia/trackasia-java.git'
-    trackAsiaArtifactScmUrl = 'scm:git@github.com:track-asia/trackasia-java.git'
+    trackAsiaArtifactUrl = 'https://github.com/trackasia/trackasia-java'
+    trackAsiaArtifactVcsUrl = 'https://github.com/trackasia/trackasia-java.git'
+    trackAsiaArtifactScmUrl = 'scm:git@github.com:trackasia/trackasia-java.git'
     trackAsiaArtifactLicenseName = 'The Apache Software License, Version 2.0'
     trackAsiaArtifactLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    versionName = "2.0.0"
-    // isSnapshot = isSnapshot()
+    versionName = getVersionName()
+    isSnapshot = isSnapshot()
 }
 
-//def getVersionName() {
-//    def version = System.getenv('VERSION')
-//    def deducedVersion = isSnapshot() ? getSnapshotVersion(version) : version
-//    project.logger.info("Project version detected: ${deducedVersion}")
-//    return deducedVersion
-//}
+def getVersionName() {
+    def version = System.getenv('VERSION')
+    def deducedVersion = isSnapshot() ? getSnapshotVersion(version) : version
+    project.logger.info("Project version detected: ${deducedVersion}")
+    return deducedVersion
+}
 
-//def isSnapshot() {
-//    def snapshotProp = findProperty("snapshot")
-//    return snapshotProp ? snapshotProp.asBoolean() : false
-//}
+def isSnapshot() {
+    def snapshotProp = findProperty("snapshot")
+    return snapshotProp ? snapshotProp.asBoolean() : false
+}
 
 private static def getSnapshotVersion(String version) {
     def matcher = version =~ /^[v|V](\d+).(\d+)?.*/

@@ -1,9 +1,106 @@
-apply plugin: 'java-library'
-version = rootProject.file('VERSION').text.trim()
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFrameworkConfig
 
-dependencies {
-  api project(":services-geojson")
-
-  // Annotations
-  compileOnly libs.supportAnnotation
+plugins {
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.kotlin.cocoapods)
+    alias(libs.plugins.kotlin.dokka)
 }
+
+kotlin {
+    jvmToolchain(17)
+
+    jvm {
+        // Only for deprecated test support.
+        withJava()
+    }
+
+    def xcf = new XCFrameworkConfig(project)
+    [iosX64(), iosArm64(), iosSimulatorArm64()].forEach { target ->
+        target.binaries.framework { framework ->
+            baseName = "trackasia-turf"
+            xcf.add(framework)
+        }
+    }
+
+    js(IR) {
+        browser {
+            testTask {
+                // TODO (fabi755): not working to read assets file at the moment
+                enabled = false
+            }
+        }
+
+        nodejs()
+    }
+
+    wasmJs {
+        browser {
+            testTask {
+                // TODO (fabi755): not working to read assets file at the moment
+                enabled = false
+            }
+        }
+
+        nodejs()
+    }
+
+    sourceSets {
+        commonMain.dependencies {
+            api project(":services-geojson")
+        }
+
+        commonTest.dependencies {
+            implementation libs.kotlin.test
+            implementation libs.kotlinx.io.core
+        }
+
+        jvmMain.dependencies {
+            api libs.gson
+        }
+
+        jvmTest.dependencies {
+            implementation libs.junit
+            implementation libs.hamcrestJunit
+            implementation libs.mockito
+        }
+
+//        jsMain
+    }
+
+    cocoapods {
+        version = project.findProperty("versionName") ?: "SNAPSHOT"
+        summary = "TrackAsia GeoJSON Turf library"
+        homepage = "https://github.com/track-asia/trackasia-java/"
+
+        name = "TrackAsiaGeoJsonTurf"
+
+        framework {
+            baseName = "TrackAsiaGeoJsonTurf"
+            isStatic = false
+
+            transitiveExport = false
+            export(project(":services-geojson"))
+        }
+    }
+}
+
+tasks.register('copyiOSTestResources', Copy) {
+    from "src/commonTest/resources"
+    into "build/bin/iosX64/debugTest/resources"
+}
+
+tasks.named("iosX64Test") {
+    dependsOn "copyiOSTestResources"
+}
+
+tasks.register('copyiOSArmTestResources', Copy) {
+    from "src/commonTest/resources"
+    into "build/bin/iosSimulatorArm64/debugTest/resources"
+}
+
+tasks.named("iosSimulatorArm64Test") {
+    dependsOn "copyiOSArmTestResources"
+}
+
+apply from: "${rootDir}/gradle/publish.gradle"

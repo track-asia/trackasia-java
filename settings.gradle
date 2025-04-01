@@ -1,3 +1,20 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    // TODO (fabi755): This is currently failing, when JS support is enabled
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 rootProject.name = "trackasia-java"
 println('TrackAsia Java combined build initializing')
 

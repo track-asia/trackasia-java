@@ -1,65 +1,52 @@
-apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 apply from: file("${rootDir}/gradle/artifact-settings.gradle")
 apply from: file("${rootDir}/gradle/publish-root.gradle")
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                groupId project.ext.trackAsiaArtifactGroupId
-                artifactId project.ext.trackAsiaArtifactId
+// Define group & version for Kotlin Multiplatform artifacts
+group = project.ext.trackAsiaArtifactGroupId
+version = project.ext.versionName
 
-                from components.java
+tasks.register('dokkaHtmlJar', Jar.class) {
+    dependsOn(dokkaHtml)
+    from(dokkaHtml)
+    archiveClassifier.set("javadoc")
+}
 
-                version project.ext.versionName
+publishing {
+    publications.withType(MavenPublication) {
+        groupId project.ext.trackAsiaArtifactGroupId
+        version project.ext.versionName
 
-                project.logger.info("Publishing project with version: ${versionName}")
+        // Drop the `services` from artifact ID
+        artifactId artifactId.replace("services-", "")
 
-                artifact sourcesJar {
-                    archiveClassifier.set("sources")
-                }
+        project.logger.info("Publishing project $artifactId with version: ${version}")
 
-                artifact javadocJar {
-                    archiveClassifier.set("javadoc")
-                }
+        artifact tasks.dokkaHtmlJar
 
-                pom {
-                    name = project.ext.trackAsiaArtifactTitle
-                    description = project.ext.trackAsiaArtifactTitle
-                    url = project.ext.trackAsiaArtifactUrl
-                    licenses {
-                        license {
-                            name = project.ext.trackAsiaArtifactLicenseName
-                            url = project.ext.trackAsiaArtifactLicenseUrl
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = project.ext.trackAsiaDeveloperId
-                            name = project.ext.trackAsiaDeveloperName
-                            email = 'trackasia@track-asia.com'
-                        }
-                    }
-                    scm {
-                        connection = project.ext.trackAsiaArtifactScmUrl
-                        developerConnection = project.ext.trackAsiaArtifactScmUrl
-                        url = project.ext.trackAsiaArtifactUrl
-                    }
+        pom {
+            name = project.ext.trackAsiaArtifactTitle
+            description = project.ext.trackAsiaArtifactTitle
+            url = project.ext.trackAsiaArtifactUrl
+            licenses {
+                license {
+                    name = project.ext.trackAsiaArtifactLicenseName
+                    url = project.ext.trackAsiaArtifactLicenseUrl
                 }
             }
-        }
-
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/track-asia.com/trackasia-java"
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
+            developers {
+                developer {
+                    id = project.ext.trackAsiaDeveloperId
+                    name = project.ext.trackAsiaDeveloperName
+                    email = 'team@track-asia.com'
                 }
+            }
+            scm {
+                connection = project.ext.trackAsiaArtifactScmUrl
+                developerConnection = project.ext.trackAsiaArtifactScmUrl
+                url = project.ext.trackAsiaArtifactUrl
             }
         }
     }
@@ -72,5 +59,6 @@ tasks.withType(Javadoc) {
 }
 
 signing {
+    required { project.ext["signing.keyId"] != null }
     sign publishing.publications
 }

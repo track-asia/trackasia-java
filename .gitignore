@@ -32,3 +32,8 @@ obj
 
 .history/
 .env/
+
+sign-with-key.sh
+deploy-to-maven.sh
+cleanup-metadata.sh
+sign-artifacts.sh
